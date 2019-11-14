@@ -1,24 +1,22 @@
 package z1;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class NumberSum {
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
-        ArrayList<Double> numbers = new ArrayList<>();
-        double num;
-        createList(input, numbers);
+        List<Double> numbers = createList();
         reverseList(numbers);
         printListSum(numbers);
         printMax(numbers);
         printMin(numbers);
     }
 
-    private static void printMin(ArrayList<Double> numbers) {
-        double min = numbers.get(0);
-        for (Double number : numbers) {
+    private static void printMin(List<Double> list) {
+        double min = list.get(0);
+        for (Double number : list) {
             if (number < min) {
                 min = number;
             }
@@ -26,9 +24,9 @@ public class NumberSum {
         System.out.println("Minimalna wartosc: " + min);
     }
 
-    private static void printMax(ArrayList<Double> numbers) {
-        double max = numbers.get(0);
-        for (Double number : numbers) {
+    private static void printMax(List<Double> list) {
+        double max = list.get(0);
+        for (Double number : list) {
             if (number > max) {
                 max = number;
             }
@@ -36,12 +34,12 @@ public class NumberSum {
         System.out.println("Maksymalna wartosc: " + max);
     }
 
-    private static void printListSum(ArrayList<Double> numbers) {
+    private static void printListSum(List<Double> list) {
         double sum = 0;
         String s = "";
-        for (Double number : numbers) {
+        for (Double number : list) {
             sum += number;
-            if (number != numbers.get(numbers.size() - 1)) {
+            if (number != list.get(list.size() - 1)) {
                 s += number + "+";
             } else {
                 s += number + "=" + sum;
@@ -50,14 +48,16 @@ public class NumberSum {
         System.out.println(s);
     }
 
-    private static void reverseList(ArrayList<Double> numbers) {
-        for (int i = numbers.size() - 1; i >= 0; i--) {
-            System.out.println(numbers.get(i));
+    private static void reverseList(List<Double> list) {
+        for (int i = list.size() - 1; i >= 0; i--) {
+            System.out.println(list.get(i));
         }
     }
 
-    private static void createList(Scanner input, ArrayList<Double> numbers) {
+    private static List<Double> createList() {
         double num;
+        Scanner input = new Scanner(System.in);
+        List<Double> numbers = new ArrayList<>();
         do {
             System.out.println("Wprowadz liczbe");
             num = input.nextDouble();
@@ -66,5 +66,7 @@ public class NumberSum {
                 numbers.add(num);
             }
         } while (num >= 0);
+        input.close();
+        return numbers;
     }
 }

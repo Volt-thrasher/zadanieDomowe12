@@ -12,18 +12,18 @@ public class NumberSetTest {
             LinkedList<Integer> numbersList = new LinkedList<>();
             TreeSet<Integer> numbers = new TreeSet<>();
             String line;
-            while ((line=bfr.readLine())!=null){
+            while ((line = bfr.readLine()) != null) {
                 numbersList.add(Integer.parseInt(line));
                 numbers.add(Integer.parseInt(line));
             }
             for (Integer num : numbers) {
                 int count = 0;
-                for (int i = 0; i <numbersList.size() ; i++) {
-                    if (num == numbersList.get(i)){
+                for (int i = 0; i < numbersList.size(); i++) {
+                    if (num == numbersList.get(i)) {
                         count++;
                     }
                 }
-                System.out.println(num+"-liczba wystapien: "+count);
+                System.out.println(num + "-liczba wystapien: " + count);
             }
         } catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
