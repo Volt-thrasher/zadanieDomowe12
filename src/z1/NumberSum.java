@@ -9,32 +9,32 @@ public class NumberSum {
 
         List<Double> numbers = createList();
         reverseList(numbers);
-        printListSum(numbers);
-        printMax(numbers);
-        printMin(numbers);
+        System.out.println(printListSum(numbers));
+        System.out.println("Maksymalna wartosc: " + printMax(numbers));
+        System.out.println("Minimalna wartosc: " + printMin(numbers));
     }
 
-    private static void printMin(List<Double> list) {
+    private static double printMin(List<Double> list) {
         double min = list.get(0);
         for (Double number : list) {
             if (number < min) {
                 min = number;
             }
         }
-        System.out.println("Minimalna wartosc: " + min);
+        return  min;
     }
 
-    private static void printMax(List<Double> list) {
+    private static double printMax(List<Double> list) {
         double max = list.get(0);
         for (Double number : list) {
             if (number > max) {
                 max = number;
             }
         }
-        System.out.println("Maksymalna wartosc: " + max);
+        return max;
     }
 
-    private static void printListSum(List<Double> list) {
+    private static String printListSum(List<Double> list) {
         double sum = 0;
         String s = "";
         for (Double number : list) {
@@ -45,7 +45,7 @@ public class NumberSum {
                 s += number + "=" + sum;
             }
         }
-        System.out.println(s);
+        return s;
     }
 
     private static void reverseList(List<Double> list) {
